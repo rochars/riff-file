@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-riff-file.html">riff-file</a><ul class='methods'><li data-type='method'><a href="module-riff-file.html#findChunk">findChunk</a></li><li data-type='method'><a href="module-riff-file.html#readString">readString</a></li><li data-type='method'><a href="module-riff-file.html#readUInt32">readUInt32</a></li><li data-type='method'><a href="module-riff-file.html#setSignature">setSignature</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-riff-file.html">riff-file</a><ul class='methods'><li data-type='method'><a href="module-riff-file.html#findChunk">findChunk</a></li><li data-type='method'><a href="module-riff-file.html#readString">readString</a></li><li data-type='method'><a href="module-riff-file.html#readUInt32">readUInt32</a></li><li data-type='method'><a href="module-riff-file.html#setSignature">setSignature</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>riff-file</h1>
+<p>Copyright (c) 2019 Rafael da Silva Rocha.<br>
+https://github.com/rochars/riff-file</p>
+<p><a href="https://www.npmjs.com/package/riff-file"><img src="https://img.shields.io/npm/v/riff-file.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/riff-file/docs"><img src="https://img.shields.io/badge/API-docs-blue.svg?style=for-the-badge" alt="Docs"></a> <a href="https://rochars.github.io/riff-file/test/browser.html"><img src="https://img.shields.io/badge/tests-online-blue.svg?style=for-the-badge" alt="Tests"></a><br>
+<a href="https://codecov.io/gh/rochars/riff-file"><img src="https://img.shields.io/codecov/c/github/rochars/riff-file.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/riff-file"><img src="https://img.shields.io/travis/rochars/riff-file.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/riff-file"><img src="https://img.shields.io/appveyor/ci/rochars/riff-file.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/riff-file/"><img src="https://img.shields.io/scrutinizer/g/rochars/riff-file.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
+<p>Read data from RIFF files.</p>
+<ul>
+<li><strong>MIT licensed</strong></li>
+<li><strong>Use it in the browser</strong></li>
+<li><strong>Use it with Node.js</strong></li>
+</ul>
+<h2>Install</h2>
+<pre class="prettyprint source"><code>npm install riff-file
+</code></pre>
+<h2>API</h2>
+<h3>The RIFFFile methods</h3>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * Read the signature of the chunks in a RIFF/RIFX file.
+ * @param {!Uint8Array} buffer The file bytes.
+ */
+RIFFFile.fromBuffer = function(buffer) {};
+
+/**
+ * Find a chunk by its fourCC_ in a array of RIFF chunks.
+ * @param {string} chunkId The chunk fourCC_.
+ * @param {boolean} multiple True if there may be multiple chunks
+ *    with the same chunkId.
+ * @return {Object}
+ */
+RIFFFile.toBitDepth = function(chunkId, multiple=false) {};
+</code></pre>
+<h3>The RIFFFile properties</h3>
+<pre class="prettyprint source lang-javascript"><code>/**
+ * The container identifier.
+ * @type {string}
+ */
+RIFFFile.container = '';
+/**
+ * @type {number}
+ */
+RIFFFile.chunkSize = 0;
+/**
+ * The format.
+ * Always WAVE.
+ * @type {string}
+ */
+RIFFFile.format = '';
+/**
+ * A object defining the start and end of all chunks in a wav buffer.
+ * @type {!Object&lt;string, *>}
+ */
+RIFFFile.junk = {
+  /** @type {string} */
+  chunkId: '',
+  /** @type {number} */
+  chunkSize: 0,
+  /** @type {string} */
+  format: '',
+  /** @type {!Array&lt;Object>} */
+  subChunks: []
+};
+</code></pre>
+<h2>Contributing to riff-file</h2>
+<p><strong>riff-file</strong> welcomes all contributions from anyone willing to work in good faith with other contributors and the community. No contribution is too small and all contributions are valued.</p>
+<p>See <a href="https://github.com/rochars/riff-file/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> for details.</p>
+<h3>Style guide</h3>
+<p><strong>riff-file</strong> code should follow the Google JavaScript Style Guide:<br>
+https://google.github.io/styleguide/jsguide.html</p>
+<h3>Code of conduct</h3>
+<p>This project is bound by a Code of Conduct: The <a href="https://github.com/rochars/riff-file/blob/master/CODE_OF_CONDUCT.md">Contributor Covenant, version 1.4</a>, also available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html</p>
+<h3>LICENSE</h3>
+<p>Copyright (c) 2019 Rafael da Silva Rocha.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&quot;Software&quot;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
+    </section>
+
+
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        index.js
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/rochars/riff-file">https://github.com/rochars/riff-file</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+        
+            <div class="description">The RIFFFile class.</div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Fri Aug 09 2019 15:50:49 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
