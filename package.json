@@ -1,6 +1,6 @@
 {
   "name": "riff-file",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Read data from RIFF files.",
   "homepage": "https://github.com/rochars/riff-file",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",

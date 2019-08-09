@@ -949,16 +949,17 @@ class RIFFFile {
      */
     this.container = '';
     /**
+     * The main chunk size, in bytes.
      * @type {number}
      */
     this.chunkSize = 0;
     /**
-     * The format.
+     * The format identifier.
      * @type {string}
      */
     this.format = '';
     /**
-     * A object defining the start and end of all chunks in a wav buffer.
+     * An object representing the signature of all chunks in the file.
      * @type {!Object}
      */
     this.signature = {};

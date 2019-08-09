@@ -17,6 +17,41 @@ Read data from RIFF files.
 npm install riff-file
 ```
 
+## Use
+```javascript
+let wavFile = fs.readFileSync("file.wav");
+let riff = new RIFFFile();
+riff.setSignature(wavFile);
+console.log(riff.signature);
+```
+
+The *signature* is an object representing the structure of the RIFF file. Chunks are listed in the *subChunks* property in the order they appear in the binary file. An example of what the signature of a RIFF WAVE file might look like:
+```javascript
+{
+  chunkId: 'RIFF',
+  chunkSize: 96096,
+  format: 'WAVE',
+  subChunks:
+    [ 
+   	  {
+   	  	chunkId: 'fmt ',
+   	  	chunkSize: 16,
+   	  	chunkData: { start: 20, end: 36 }
+   	  },
+      {
+      	chunkId: 'junk',
+      	chunkSize: 52,
+      	chunkData: { start: 44, end: 96 }
+      },
+      {
+      	chunkId: 'data',
+      	chunkSize: 96000,
+      	chunkData: { start: 104, end: 96104 }
+      }
+    ]
+ }
+```
+
 ## API
 
 ### The RIFFFile methods
@@ -34,7 +69,7 @@ RIFFFile.fromBuffer = function(buffer) {};
  *    with the same chunkId.
  * @return {Object}
  */
-RIFFFile.toBitDepth = function(chunkId, multiple=false) {};
+RIFFFile.findChunk = function(chunkId, multiple=false) {};
 ```
 
 ### The RIFFFile properties
@@ -45,20 +80,20 @@ RIFFFile.toBitDepth = function(chunkId, multiple=false) {};
  */
 RIFFFile.container = '';
 /**
+ * The main chunk size, in bytes.
  * @type {number}
  */
 RIFFFile.chunkSize = 0;
 /**
- * The format.
- * Always WAVE.
+ * The format identifier.
  * @type {string}
  */
 RIFFFile.format = '';
 /**
- * A object defining the start and end of all chunks in a wav buffer.
+ * An object representing the signature of all chunks in the file.
  * @type {!Object<string, *>}
  */
-RIFFFile.junk = {
+RIFFFile.signature = {
   /** @type {string} */
   chunkId: '',
   /** @type {number} */

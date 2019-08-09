@@ -14,7 +14,7 @@ declare class RIFFFile {
   container: string;
 
   /**
-   * The size of the main chunk.
+   * The main chunk size, in bytes.
    * @type {number}
    */
   chunkSize: number;
@@ -26,7 +26,7 @@ declare class RIFFFile {
   format: string;
 
   /**
-   * A object defining the start and end of all chunks in a wav buffer.
+   * An object representing the signature of all chunks in the file.
    * @type {!Object<string, *>}
    */
   signature: object;
@@ -38,11 +38,11 @@ declare class RIFFFile {
   setSignature(bytes: Uint8Array): void;
 
   /**
-   * Change the bit depth of the samples.
+   * Find a chunk by its fourCC_ in a array of RIFF chunks.
    * @param {string} chunkId The chunk fourCC_.
    * @param {boolean} multiple True if there may be multiple chunks
     *    with the same chunkId.
    * @return {Object}
    */
-  findChunk(chunkId: string, multiple?: boolean): void;
+  findChunk(chunkId: string, multiple?: boolean): object;
 }
