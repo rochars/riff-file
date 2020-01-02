@@ -24,10 +24,12 @@
     "url": "https://github.com/rochars/riff-file/issues"
   },
   "directories": {
-    "dist": "dist"
+    "dist": "dist",
+    "externs": "externs"
   },
   "files": [
     "dist",
+    "externs",
     "index.js",
     "index.d.ts",
     "LICENSE",
