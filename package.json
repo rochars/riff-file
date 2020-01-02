@@ -1,6 +1,6 @@
 {
   "name": "riff-file",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Read data from RIFF files.",
   "homepage": "https://github.com/rochars/riff-file",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
@@ -64,6 +64,6 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
-    "byte-data": "^18.0.2"
+    "byte-data": "^18.0.3"
   }
 }
