@@ -19,6 +19,7 @@ npm install riff-file
 
 ## Use
 ```javascript
+const RIFFFile = require('riff-file').RIFFFile;
 let wavFile = fs.readFileSync("file.wav");
 let riff = new RIFFFile();
 riff.setSignature(wavFile);

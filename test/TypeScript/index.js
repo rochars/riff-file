@@ -8,7 +8,7 @@ exports.__esModule = true;
  * @see https://github.com/rochars/riff-file
  */
 var index_js_1 = require("../../index.js");
-var wav = new index_js_1["default"]();
+var wav = new index_js_1.RIFFFile();
 //try {
 //	wav.setSignature(new Uint8Array([0,0,0,0,0,0,0,0,0,0,0]));
 //} catch (e) {

@@ -19,21 +19,21 @@
 			To run all the tests <strong>git clone https://github.com/rochars/riff-file</strong>, <strong>npm install</strong> it and <strong>npm test</strong> it.
 	</div>
 
-	<!-- Load Mocha -->
+	<!-- Load Chai and Mocha -->
 	<div class="container">
 		<div id="mocha"></div>
 	</div>
+	<script src="https://www.chaijs.com/chai.js"></script>
+	<script src="https://unpkg.com/mocha@6.2.2/mocha.js"></script>
+
+	<!-- Load UMD -->
+	<script src="../dist/riff-file.js"></script>
 	
-	<script src="https://cdn.jsdelivr.net/npm/chai@4.1.2/chai.js"></script>
 	<script>
 		var assert = chai.assert;
+		var RIFFFile = riffFile.RIFFFile;
+		mocha.setup('bdd')
 	</script>
-	
-	<script src="https://unpkg.com/mocha@4.0.1/mocha.js"></script>
-	<script>mocha.setup('bdd')</script>
-
-	<!-- Load browser dist -->
-	<script src="../dist/riff-file.umd.js"></script>
 
 	<!-- Load the tests -->
 	<script src="src/instantiation.js"></script>

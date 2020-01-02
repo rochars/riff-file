@@ -7,7 +7,7 @@
  * @see https://github.com/rochars/riff-file
  */
 
-import RIFFFile from '../../index.js'
+import { RIFFFile } from '../../index.js';
 
 let wav = new RIFFFile();
 

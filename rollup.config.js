@@ -1,5 +1,25 @@
 /*
- * Copyright (c) 2019 Rafael da Silva Rocha.
+ * Copyright (c) 2018-2019 Rafael da Silva Rocha.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
  */
 
 /**
@@ -7,50 +27,31 @@
  * @see https://github.com/rochars/riff-file
  */
 
-import {terser} from 'rollup-plugin-terser';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
-
-// Read externs definitions
-const fs = require('fs');
-const polyfills = fs.readFileSync('./scripts/polyfills.js', 'utf8');
+import compiler from '@ampproject/rollup-plugin-closure-compiler';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default [
-  // ES6/cjs bundle
   {
     input: 'index.js',
     output: [
       {
         file: 'dist/riff-file.js',
-        format: 'es'
-      },
-      {
-        file: 'dist/riff-file.cjs.js',
-        format: 'cjs'
-      },
-    ],
-    plugins: [
-      resolve(),
-      commonjs()
-    ]
-  },
-  // Main UMD dist
-  {
-    input: 'index.js',
-    output: [
-      {
-        file: 'dist/riff-file.umd.js',
-        name: 'RIFFFile',
+        name: 'riffFile',
         format: 'umd',
-        banner: polyfills
+        strict: false
       },
     ],
     plugins: [
       resolve(),
       commonjs(),
-      babel(),
-      terser({mangle: false})
+      compiler({
+        language_in: 'ECMASCRIPT6',
+        language_out: 'ECMASCRIPT3',
+        compilation_level: 'ADVANCED',
+        warning_level: 'VERBOSE',
+        externs: ['externs/riff-file.js']
+      })
     ]
-  },
+  }
 ];

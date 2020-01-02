@@ -34,7 +34,7 @@ import {unpackString, unpack} from 'byte-data';
 /**
  * A class to perform low-level reading of RIFF/RIFX files.
  */
-export default class RIFFFile {
+export class RIFFFile {
 
   constructor() {
     /**
@@ -64,10 +64,12 @@ export default class RIFFFile {
      */
     this.head = 0;
     /**
-     * @type {!Object}
+     * @type {
+      {bits: number, be: boolean, signed: boolean, fp: boolean}
+     }
      * @protected
      */
-    this.uInt32 = {bits: 32, be: false};
+    this.uInt32 = { bits: 32, be: false, signed: false, fp: false };
     /**
      * The list of supported containers.
      * Any format different from RIFX will be treated as RIFF.
