@@ -99,16 +99,15 @@ export class RIFFFile {
     this.format = '';
     /**
      * An object representing the signature of all chunks in the file.
-     * @type {
-      {chunkId: string, chunkSize: number, format: string, subChunks: Array}
-     }
+     * @type {{
+      chunkId: string,
+      chunkSize: number,
+      format: string,
+      chunkData: {start: number, end: number},
+      subChunks: Array
+      }|null}
      */
-    this.signature = {
-      chunkId : '',
-      chunkSize : 0,
-      format: '',
-      subChunks: []
-    };
+    this.signature = null;
     /**
      * @type {number}
      * @protected
@@ -149,7 +148,8 @@ export class RIFFFile {
           chunkId: this.container,
           chunkSize: this.chunkSize,
           format: this.format,
-          subChunks: this.getSubChunksIndex_(buffer)
+          subChunks: this.getSubChunksIndex_(buffer),
+          chunkData: {start: 0, end: this.chunkSize}
       };
   }
 
