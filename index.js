@@ -55,9 +55,16 @@ export class RIFFFile {
     this.format = '';
     /**
      * An object representing the signature of all chunks in the file.
-     * @type {!Object}
+     * @type {
+      {chunkId: string, chunkSize: number, format: string, subChunks: Array}
+     }
      */
-    this.signature = {};
+    this.signature = {
+      chunkId : '',
+      chunkSize : 0,
+      format: '',
+      subChunks: []
+    };
     /**
      * @type {number}
      * @protected
@@ -111,7 +118,7 @@ export class RIFFFile {
     * @protected
     */
   findChunk(chunkId, multiple=false) {
-    /** @type {!Array<!Object>} */
+    /** @type {!Array|null} */
     let chunks = this.signature.subChunks;
     /** @type {!Array<!Object>} */
     let chunk = [];

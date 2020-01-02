@@ -92,7 +92,9 @@ RIFFFile.chunkSize = 0;
 RIFFFile.format = '';
 /**
  * An object representing the signature of all chunks in the file.
- * @type {!Object<string, *>}
+ * @type {
+  {chunkId: string, chunkSize: number, format: string, subChunks: Array}
+ }
  */
 RIFFFile.signature = {
   /** @type {string} */

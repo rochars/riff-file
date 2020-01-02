@@ -55,9 +55,16 @@ RIFFFile.prototype.format = '';
 
 /**
  * An object representing the signature of all chunks in the file.
- * @type {!Object}
+ * @type {
+  {chunkId: string, chunkSize: number, format: string, subChunks: Array}
+ }
  */
-RIFFFile.prototype.signature = {};
+RIFFFile.prototype.signature = {
+  chunkId : '',
+  chunkSize : 0,
+  format: '',
+  subChunks: []
+};
 
 /**
  * @type {number}
